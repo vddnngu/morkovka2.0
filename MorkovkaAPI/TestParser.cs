@@ -5,39 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Morkovka
+namespace MorkovkaAPI
 {
-    enum typeEntity
+    public enum typeEntity
     {
         text,
         question,
         answer
     }
-    class RecEntity
+    public class RecEntity
     {
         public int num;
         public typeEntity type;
         
     }
 
-    class QuestEntity :  RecEntity
+    public class QuestEntity :  RecEntity
     {
-        public int numText;
-        public List<int> numbersTexts = new List<int>();
+        public List<int> numbersTextLines = new List<int>();
+        public List<int> numbersAnswersTexts = new List<int>();
         public List<int> numbersAnswers = new List<int>();
 
     }
 
-    class AnswerEntity : RecEntity
+    public class AnswerEntity : RecEntity
     {
         public int numText;
     }
 
-    class TextEntity : RecEntity
+    public class TextEntity : RecEntity
     {
         public string text;
     }
-    class TestParser
+    public class TestParser
     {
         string path;
         FileStream file;
@@ -129,12 +129,17 @@ namespace Morkovka
         {
             QuestEntity res = new QuestEntity();
             res.num = Convert.ToInt32(strs[0]);
-            res.numText = Convert.ToInt32(strs[2]);
-            int count = Convert.ToInt32(strs[3]);
+            int numOfLines = Convert.ToInt32(strs[2]);
+            for (int i = 0; i < numOfLines; i++)
+            {
+                res.numbersTextLines.Add(Convert.ToInt32(strs[3 + i]));
+            }
+            int count = Convert.ToInt32(strs[3+ numOfLines]);
+            numOfLines += 4;// стартовая позиция
             for(int i = 0; i < count; i++)
             {
-                res.numbersTexts.Add(Convert.ToInt32(strs[4 + i]));
-                res.numbersAnswers.Add(Convert.ToInt32(strs[4 + count + i]));
+                res.numbersAnswersTexts.Add(Convert.ToInt32(strs[numOfLines + i]));
+                res.numbersAnswers.Add(Convert.ToInt32(strs[numOfLines + count + i]));
             }
             res.type = typeEntity.question;
             return res;
@@ -142,7 +147,7 @@ namespace Morkovka
         
     }
 
-    class TestCreater
+    public class TestCreater
     {
         Dictionary<int, RecEntity> entityRecords;
         int mainEntity;
@@ -174,12 +179,18 @@ namespace Morkovka
             if(entityRecords[entityNumber].type == typeEntity.text) throw new Exception("Type of start entity must be a question or answer!");
             if(entityRecords[entityNumber].type == typeEntity.question)
             {
-                int numText = (entityRecords[entityNumber] as QuestEntity).numText;
-                currentLink = new Question(textEntityHandler(numText));
-                int countAnswers = (entityRecords[entityNumber] as QuestEntity).numbersTexts.Count;
+                int countTextLines = (entityRecords[entityNumber] as QuestEntity).numbersTextLines.Count;
+                String text = "";
+                for (int i = 0; i < countTextLines; i++)
+                {
+                    text += textEntityHandler((entityRecords[entityNumber] as QuestEntity).numbersTextLines[i])+"\n";
+                }
+                currentLink = new Question(text);
+                int countAnswers = (entityRecords[entityNumber] as QuestEntity).numbersAnswersTexts.Count;
                 for (int i = 0; i< countAnswers; i++)
                 {
-                    (currentLink as Question).addAnswer(textEntityHandler((entityRecords[entityNumber] as QuestEntity).numbersTexts[i]), linkEntityHandler((entityRecords[entityNumber] as QuestEntity).numbersAnswers[i]));
+                    (currentLink as Question).addAnswer(textEntityHandler((entityRecords[entityNumber] as QuestEntity).numbersAnswersTexts[i]),
+                        linkEntityHandler((entityRecords[entityNumber] as QuestEntity).numbersAnswers[i]));
                 }
             }
             else

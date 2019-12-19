@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Morkovka
+namespace MorkovkaAPI
 {
-    class Property
+    public class Property
     {
         public List<Tuple<string, string>> prop = new List<Tuple<string, string>>();
         public string testName;
@@ -21,7 +21,7 @@ namespace Morkovka
             prop.Add(new Tuple<string, string>("Main Question Number", "" + num));
         }
     }
-    class TestWriter
+    public class TestWriter
     {
         Link root;
         FileStream file;

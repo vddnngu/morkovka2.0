@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StudentWindow
+namespace TeacherWindow
 {
-    public partial class Form1 : Form
+    public partial class TeacherForm : Form
     {
-        public Form1()
+        public TeacherForm()
         {
             InitializeComponent();
         }
+
+        
     }
 }

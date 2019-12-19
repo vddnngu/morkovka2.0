@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Morkovka
+namespace MorkovkaAPI
 {
-    class TestProcessing
+    public class TestProcessing
     {
         Link currentLink;
         public TestProcessing(Link root)
