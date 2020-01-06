@@ -29,7 +29,10 @@ namespace MorkovkaAPI
 
         internal void setMainText(string text)
         {
+            //TODO добавить поддержку длинных строк (динамическое изменение размера шрифта)
             var tmp = text.Split('\n');
+            var cn = tmp.Length;
+            mainTextLable.Location = new Point((int)(Width * 0.07), (int)(Height / 3 - 15 * (cn - 1)));
             mainTextLable.Text = text;
         }
 

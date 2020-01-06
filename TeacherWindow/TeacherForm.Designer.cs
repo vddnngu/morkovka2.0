@@ -1,4 +1,4 @@
-﻿namespace TeacherWindow
+﻿namespace MorkovkaAPI
 {
     partial class TeacherForm
     {

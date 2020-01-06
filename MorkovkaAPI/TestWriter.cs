@@ -13,7 +13,7 @@ namespace MorkovkaAPI
         public string testName;
         public void addAuthor(string author)
         {
-            //TODO
+            prop.Add(new Tuple<string, string>("Author", "" + author));
         }
 
         public void addMainQuestion(int num)
