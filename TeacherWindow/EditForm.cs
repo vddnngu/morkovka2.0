@@ -46,8 +46,22 @@ namespace TeacherWindow
         }
         private void delAnswers(object sender, EventArgs e)
         {
-            
+            for (int i=0; i<answerList.Count; i++)
+            {
+                if (answerList[i].Item2 == (sender as Button))
+                {
+                    (currentLink as Question).removeAnswer(answerList[i].Item1.Text);
+                    for (int j = 0; j < answerList.Count(); j++)
+                    {
+
+                        this.Controls.Remove(answerList[j].Item1);
+                        this.Controls.Remove(answerList[j].Item2);
+                    }
+                }
+            }
+            fillAnswerList();
         }
+
         public void setCurrentLink(Link link)
         {
             currentLink = link;
@@ -62,7 +76,6 @@ namespace TeacherWindow
         }
         private void EditForm_Load(object sender, EventArgs e)
         {
-            fillAnswerList();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -109,6 +122,14 @@ namespace TeacherWindow
         private void button2_Click(object sender, EventArgs e)
         {
             currentLink.setText(richTextBox1.Text);
+            if (currentLink.isQuestion() == true)
+            {
+                List<String> answers = (currentLink as Question).getAnswers();
+                for (int i=0; i<answers.Count;i++)
+                {
+                    answers[i] = answerList[i].Item1.Text;
+                }
+            }
   
         }
 

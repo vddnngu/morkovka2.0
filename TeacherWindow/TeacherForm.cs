@@ -17,6 +17,8 @@ namespace MorkovkaAPI
         TeacherGUI myGUI;
         Button editBut;
         List<Button> buttonsForRemove = new List<Button>();
+        Link mainlink;
+
         int j = 0;
         public TeacherForm()
         {
@@ -61,7 +63,10 @@ namespace MorkovkaAPI
                 this.Controls.Add(buts[i]);
                 buttonsForRemove.Add(buts[i]);
             }
-            
+            editBut = new Button();
+            editBut.Location = new Point(Width - 160, Height - 100);
+            editBut.Click += new EventHandler(editBut_Click);
+            this.Controls.Add(editBut);
 
 
         }
@@ -98,10 +103,12 @@ namespace MorkovkaAPI
                 myGUI = new TeacherGUI(this, game);
                 myGUI.start();
             }
-            editBut = new Button();
-            editBut.Location = new Point(Width-160, Height-100);
-            editBut.Click += new EventHandler(editBut_Click);
-            this.Controls.Add(editBut);
+            
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
