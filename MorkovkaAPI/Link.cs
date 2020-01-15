@@ -15,6 +15,10 @@ namespace MorkovkaAPI
         {
             return isQuest;
         }
+        public void setText(string txt)
+        {
+            text = txt;
+        }
         public string getText()
         {
             return text;

@@ -20,12 +20,14 @@ namespace TeacherWindow
         {
             InitializeComponent();
             
+            
         }
         public void fillAnswerList()
         {
 
             List<String> answers = (currentLink as Question).getAnswers();
            answerList = new List<Tuple<TextBox, Button>>();
+
             for(int i=0; i<answers.Count; i++)
             {
                 TextBox tmp = new TextBox();
@@ -49,6 +51,14 @@ namespace TeacherWindow
         public void setCurrentLink(Link link)
         {
             currentLink = link;
+            if (currentLink.isQuestion() == true)
+            {
+                radioButton2.Checked = true;
+            }
+            else
+            {
+                radioButton1.Checked = true;
+            }
         }
         private void EditForm_Load(object sender, EventArgs e)
         {
@@ -57,12 +67,20 @@ namespace TeacherWindow
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+            if (radioButton1.Checked == true)
+            {
+                for (int i = 0; i < answerList.Count(); i++)
+                {
 
+                    this.Controls.Remove(answerList[i].Item1);
+                    this.Controls.Remove(answerList[i].Item2);
+                }
+                this.Controls.Remove(button1);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Link link;
 
             int i = answerList.Count();
             TextBox tmp = new TextBox();
@@ -77,7 +95,7 @@ namespace TeacherWindow
             tmp2.Click += new EventHandler(delAnswers);
 
             answerList.Add(new Tuple<TextBox, Button>(tmp, tmp2));
-            (currentLink as Question).addAnswer(richTextBox1.Text,);
+            (currentLink as Question).addAnswer(richTextBox1.Text,new Link());
             this.Controls.Add(tmp);
             this.Controls.Add(tmp2);
             
@@ -86,6 +104,22 @@ namespace TeacherWindow
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            currentLink.setText(richTextBox1.Text);
+  
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked == true)
+            {
+                fillAnswerList();
+                this.Controls.Add(button1);
+            }
+            
         }
     }
 }
