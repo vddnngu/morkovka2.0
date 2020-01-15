@@ -50,7 +50,7 @@
             this.тестToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem});
             this.тестToolStripMenuItem.Name = "тестToolStripMenuItem";
-            this.тестToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.тестToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.тестToolStripMenuItem.Text = "Тест";
             // 
             // открытьToolStripMenuItem
@@ -60,6 +60,7 @@
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
             this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // изФайлаToolStripMenuItem
             // 

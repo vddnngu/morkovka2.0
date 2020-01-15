@@ -35,6 +35,10 @@ namespace MorkovkaAPI
         {
             return currentLink.isQuestion();
         }
+        public Link getCurLink()
+        {
+            return currentLink;
+        }
         public bool goNext(String answer)
         {
             if (currentLink.isQuestion())

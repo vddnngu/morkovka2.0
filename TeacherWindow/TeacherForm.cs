@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeacherWindow;
 
 namespace MorkovkaAPI
 {
@@ -14,6 +15,7 @@ namespace MorkovkaAPI
     {
         Label mainTextLable;
         TeacherGUI myGUI;
+        Button editBut;
         List<Button> buttonsForRemove = new List<Button>();
         int j = 0;
         public TeacherForm()
@@ -25,6 +27,7 @@ namespace MorkovkaAPI
             mainTextLable.MaximumSize = new Size(700, 0);
             mainTextLable.Font = new Font(mainTextLable.Font.Name, 20, mainTextLable.Font.Style);
             Controls.Add(mainTextLable);
+
         }
 
         internal void setMainText(string text)
@@ -46,6 +49,7 @@ namespace MorkovkaAPI
         internal void addButtons(List<Button> buts)
         {
             removeButtons();
+            
             var startPoint = new Point((int)(Width * 0.07), (int)(Height / 2));
             int buttonWidth = (int)(Width * 0.2);
             int buttonHeigth = (int)(Height * 0.1);
@@ -57,15 +61,30 @@ namespace MorkovkaAPI
                 this.Controls.Add(buts[i]);
                 buttonsForRemove.Add(buts[i]);
             }
-        }
+            
 
+
+        }
+        void editBut_Click(object sender, EventArgs e)
+        {
+            EditForm form = new EditForm();
+            form.setCurrentLink(myGUI.getCurrentLink());
+            form.Show();
+
+        }
+       
 
         private void TeacherForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void изФайлаToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void изФайлаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void изФайлаToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string path;
             OpenFileDialog OPF = new OpenFileDialog();
@@ -79,6 +98,10 @@ namespace MorkovkaAPI
                 myGUI = new TeacherGUI(this, game);
                 myGUI.start();
             }
+            editBut = new Button();
+            editBut.Location = new Point(Width-160, Height-100);
+            editBut.Click += new EventHandler(editBut_Click);
+            this.Controls.Add(editBut);
         }
     }
 }

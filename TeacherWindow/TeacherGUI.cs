@@ -31,6 +31,10 @@ namespace MorkovkaAPI
             createButtons();
 
         }
+        public Link getCurrentLink()
+        {
+            return game.getCurLink();
+        }
         Button createButton(string name, string text, Link link)
         {
             Button newbtn = new Button();

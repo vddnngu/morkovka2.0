@@ -80,5 +80,10 @@ namespace MorkovkaAPI
                 myGUI.start();
             }
         }
+
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

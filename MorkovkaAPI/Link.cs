@@ -20,7 +20,7 @@ namespace MorkovkaAPI
             return text;
         }
     }
-    class Question : Link
+    public class Question : Link
     {
 
         List<String> answers;
@@ -74,7 +74,7 @@ namespace MorkovkaAPI
             return links;
         }
     }
-    class Answer : Link
+    public class Answer : Link
     {
 
         public Answer()
