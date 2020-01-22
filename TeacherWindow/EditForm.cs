@@ -62,7 +62,7 @@ namespace TeacherWindow
         }
         private void EditForm_Load(object sender, EventArgs e)
         {
-            fillAnswerList();
+            //fillAnswerList();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
