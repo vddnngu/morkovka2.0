@@ -43,19 +43,20 @@ namespace MorkovkaAPI
             linkNumbers = new Dictionary<Link, int>();
             textNumbers = new Dictionary<string, int>();
             testData = "";
-            addHeader();
+            prop.addMainQuestion(currentEntityNumber);
             addEntity(root);
             testData += "END.";
+            addHeader();
         }
 
         int addEntity(Link link)
         {
+           
             int num;
-            if (linkNumbers.ContainsKey(link)) return linkNumbers[link];
-            else { 
-                num = currentEntityNumber++;
-                linkNumbers.Add(link, num);
-            }
+            if (linkNumbers.ContainsKey(link)) 
+                return linkNumbers[link];
+            num = currentEntityNumber++;
+            linkNumbers.Add(link, num);
             if (link.isQuestion()) writeQuestion(num, link);
             else writeAnswers(num, link);
             return num;
@@ -72,7 +73,12 @@ namespace MorkovkaAPI
         private void writeQuestion(int num, Link link)
         {
             string str = ""+num;
-            str += "|Q|" + addEntity(link.getText());
+            string[] strs = link.getText().Split('\n');
+            str += "|Q|" + (strs.Length-1);
+            for (int i = 0; i < strs.Length-1; i++)
+            {
+                str +="|" + addEntity(strs[i]);
+            }
             var answlist = (link as Question).getAnswers();
             str += "|"+answlist.Count;
             for (int i = 0; i < answlist.Count; i++)
@@ -103,18 +109,20 @@ namespace MorkovkaAPI
 
         void addHeader()
         {
-            testData += "HEADER\n";
+            string headerStr = "";
+            headerStr += "HEADER\n";
             for (int i=0;i<prop.prop.Count;i++)
             {
-                testData += prop.prop[i].Item1 + "|" + prop.prop[i].Item2+"\n";
+                headerStr += prop.prop[i].Item1 + "|" + prop.prop[i].Item2+"\n";
             }
-            testData += "END HEADER\n\n";
+            headerStr += "END HEADER\n\n";
+            testData = headerStr + testData;
         }
 
         public void Save(string path)
         {
             //file = new FileStream(path + "/" + prop.testName + ".test", FileMode.Append);
-            fout = new StreamWriter(path + "/" + prop.testName + ".test");
+            fout = new StreamWriter(path);
             generateTestData();
             fout.Write(testData);
             fout.Close();

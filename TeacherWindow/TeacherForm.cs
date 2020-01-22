@@ -14,10 +14,11 @@ namespace MorkovkaAPI
     public partial class TeacherForm : Form
     {
         Label mainTextLable;
+        string fileName;
         TeacherGUI myGUI;
         Button editBut;
         List<Button> buttonsForRemove = new List<Button>();
-        Link mainlink;
+        Link mainLink;
 
         int j = 0;
         public TeacherForm()
@@ -100,9 +101,12 @@ namespace MorkovkaAPI
             if (OPF.ShowDialog() == DialogResult.OK)
             {
                 path = OPF.FileName;
+                var strs = path.Split('\\');
+                fileName = strs[strs.Length - 1];
                 TestParser parser = new TestParser(path);
                 parser.Parse();
                 TestProcessing game = new TestProcessing(parser.getRootLink());
+                mainLink = parser.getRootLink();
                 myGUI = new TeacherGUI(this, game);
                 myGUI.start();
             }
@@ -111,7 +115,18 @@ namespace MorkovkaAPI
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string path;
+            SaveFileDialog SFD = new SaveFileDialog();
+            SFD.FileName = fileName;
+            SFD.Filter = "test (*.test)|*.test";
 
+            if (SFD.ShowDialog() == DialogResult.OK)
+            {
+                Property prop = new Property();
+                prop.addAuthor("NoBody");
+                TestWriter testWriter = new TestWriter(mainLink, prop);
+                testWriter.Save(SFD.FileName);
+            }
         }
     }
 }

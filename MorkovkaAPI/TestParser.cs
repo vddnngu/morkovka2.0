@@ -150,11 +150,13 @@ namespace MorkovkaAPI
     public class TestCreater
     {
         Dictionary<int, RecEntity> entityRecords;
+        Dictionary<int, Link> numbersLinks;
         int mainEntity;
         Question startQuestion;
         public TestCreater ()
         {
             startQuestion = null;
+            numbersLinks = new Dictionary<int, Link>();
         }
 
         public void setMainEntity(int mainEntity)
@@ -175,6 +177,7 @@ namespace MorkovkaAPI
 
         private Link linkEntityHandler(int entityNumber)
         {
+            if (numbersLinks.ContainsKey(entityNumber)) return numbersLinks[entityNumber];
             Link currentLink;
             if(entityRecords[entityNumber].type == typeEntity.text) throw new Exception("Type of start entity must be a question or answer!");
             if(entityRecords[entityNumber].type == typeEntity.question)
@@ -186,6 +189,7 @@ namespace MorkovkaAPI
                     text += textEntityHandler((entityRecords[entityNumber] as QuestEntity).numbersTextLines[i])+"\n";
                 }
                 currentLink = new Question(text);
+                numbersLinks.Add(entityNumber, currentLink);
                 int countAnswers = (entityRecords[entityNumber] as QuestEntity).numbersAnswersTexts.Count;
                 for (int i = 0; i< countAnswers; i++)
                 {
