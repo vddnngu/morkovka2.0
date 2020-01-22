@@ -29,6 +29,12 @@ namespace MorkovkaAPI
             mainTextLable.MaximumSize = new Size(700, 0);
             mainTextLable.Font = new Font(mainTextLable.Font.Name, 20, mainTextLable.Font.Style);
             Controls.Add(mainTextLable);
+            editBut = new Button();
+            editBut.Location = new Point(Width - 160, Height - 100);
+            editBut.Click += new EventHandler(editBut_Click);
+            editBut.Text = "EDIT";
+            editBut.Visible = false;
+            this.Controls.Add(editBut);
 
         }
 
@@ -63,10 +69,7 @@ namespace MorkovkaAPI
                 this.Controls.Add(buts[i]);
                 buttonsForRemove.Add(buts[i]);
             }
-            editBut = new Button();
-            editBut.Location = new Point(Width - 160, Height - 100);
-            editBut.Click += new EventHandler(editBut_Click);
-            this.Controls.Add(editBut);
+            editBut.Visible = true;
 
 
         }
@@ -81,7 +84,7 @@ namespace MorkovkaAPI
 
         private void TeacherForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void изФайлаToolStripMenuItem_Click(object sender, EventArgs e)
