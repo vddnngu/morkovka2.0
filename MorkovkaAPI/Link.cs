@@ -77,6 +77,16 @@ namespace MorkovkaAPI
         {
             return links;
         }
+        public void removeAnswer(string txt)
+        {
+            for (int i = 0; i < answers.Count; i++)
+            {
+                if (answers[i] == txt)
+                {
+                    answers.RemoveAt(i);
+                }
+            }
+        }
     }
     public class Answer : Link
     {
@@ -90,5 +100,6 @@ namespace MorkovkaAPI
             isQuest = false;
             text = _text;
         }
+        
     }
 }
