@@ -79,9 +79,27 @@ namespace MorkovkaAPI
                 myGUI = new StudentGUI(this, game);
                 myGUI.start();
             }
+            pictureBox1.Visible = false;
+            label3.Visible = false;
+            label2.Visible = false;
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

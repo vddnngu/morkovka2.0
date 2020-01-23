@@ -110,7 +110,10 @@ namespace MorkovkaAPI
                 myGUI = new TeacherGUI(this, game);
                 myGUI.start();
             }
-            
+            pictureBox1.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            button1.Location = new Point(10,390);
         }
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,6 +130,37 @@ namespace MorkovkaAPI
                 TestWriter testWriter = new TestWriter(mainLink, prop);
                 testWriter.Save(SFD.FileName);
             }
+            
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

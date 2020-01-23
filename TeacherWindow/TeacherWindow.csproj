@@ -75,6 +75,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,6 +95,21 @@
       <Project>{d378640f-d0b5-4da5-ab8b-b564f560dd4f}</Project>
       <Name>MorkovkaAPI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_aK98D5x67s.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1-3889-512-9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Без имени-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Без имени-21.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
