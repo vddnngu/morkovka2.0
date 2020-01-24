@@ -54,6 +54,7 @@ namespace MorkovkaAPI
                 buts[i].Location = new Point((int)(startPoint.X + i * buttonWidth), startPoint.Y + (i / 4 + 1) * buttonHeigth);
                 buts[i].Width = buttonWidth;
                 buts[i].Height = buttonHeigth;
+                buts[i].Font = new Font("Arial", 14, FontStyle.Regular);
                 this.Controls.Add(buts[i]);
                 buttonsForRemove.Add(buts[i]);
             }
