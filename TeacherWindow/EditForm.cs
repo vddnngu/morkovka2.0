@@ -101,7 +101,6 @@ namespace TeacherWindow
                 TextBox tmp = new TextBox();
                 tmp.Location = new Point(16, 97 + 26 * i);
                 tmp.Size = new Size(256, 20);
-                tmp.Text = richTextBox1.Text;
 
                 Button tmp2 = new Button();
                 tmp2.Location = new Point(298, 97 + 26 * i);
@@ -138,7 +137,7 @@ namespace TeacherWindow
             currentLink.setText(richTextBox1.Text);
             if (currentLink.isQuestion() == true)
             {
-                
+                (currentLink as Question).setText(richTextBox1.Text);
                 List<String> answers = (currentLink as Question).getAnswers();
                 for (int i=0; i<answers.Count;i++)
                 {
@@ -153,6 +152,7 @@ namespace TeacherWindow
         {
             if (radioButton2.Checked == true)
             {
+                richTextBox1.Text = (currentLink as Question).getText();
                 fillAnswerList();
                 this.Controls.Add(button1);
             }
