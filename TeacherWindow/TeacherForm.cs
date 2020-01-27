@@ -111,10 +111,9 @@ namespace MorkovkaAPI
                 myGUI = new TeacherGUI(this, game);
                 myGUI.start();
             }
-            pictureBox1.Visible = false;
-            label1.Visible = false;
-            label2.Visible = false;
-            button1.Location = new Point(10,390);
+            button1.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
         }
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,11 +153,6 @@ namespace MorkovkaAPI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
 
@@ -167,6 +161,33 @@ namespace MorkovkaAPI
         private void TeacherForm_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string path;
+            OpenFileDialog OPF = new OpenFileDialog();
+            OPF.Filter = "Test files(*.test)|*.test";
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                path = OPF.FileName;
+                var strs = path.Split('\\');
+                fileName = strs[strs.Length - 1];
+                TestParser parser = new TestParser(path);
+                parser.Parse();
+                TestProcessing game = new TestProcessing(parser.getRootLink());
+                mainLink = parser.getRootLink();
+                myGUI = new TeacherGUI(this, game);
+                myGUI.start();
+            }
+            button1.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
         }
     }
 }

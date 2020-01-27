@@ -34,12 +34,10 @@
             this.изФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изФайлаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -59,7 +57,7 @@
             this.изФайлаToolStripMenuItem,
             this.сохранитьToolStripMenuItem});
             this.тестToolStripMenuItem.Name = "тестToolStripMenuItem";
-            this.тестToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.тестToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.тестToolStripMenuItem.Text = "Тест";
             // 
             // изФайлаToolStripMenuItem
@@ -67,7 +65,7 @@
             this.изФайлаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.изФайлаToolStripMenuItem1});
             this.изФайлаToolStripMenuItem.Name = "изФайлаToolStripMenuItem";
-            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.изФайлаToolStripMenuItem.Text = "Открыть";
             this.изФайлаToolStripMenuItem.Click += new System.EventHandler(this.изФайлаToolStripMenuItem_Click);
             // 
@@ -81,53 +79,47 @@
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
-            // label2
+            // button2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.label2.Location = new System.Drawing.Point(333, 199);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(415, 39);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "выберите тест из файла";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.label1.Location = new System.Drawing.Point(343, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(259, 39);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Чтобы начать, ";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.Location = new System.Drawing.Point(223, 322);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(288, 70);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Выход";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(587, 388);
+            this.button1.Location = new System.Drawing.Point(223, 219);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 50);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Выход";
+            this.button1.Size = new System.Drawing.Size(288, 70);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Создать";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox1
+            // button3
             // 
-            this.pictureBox1.Image = global::TeacherWindow.Properties.Resources.Без_имени_21;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 50);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(572, 536);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            this.button3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button3.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button3.Location = new System.Drawing.Point(223, 116);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(288, 70);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Открыть";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // TeacherForm
             // 
@@ -135,20 +127,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(748, 452);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "TeacherForm";
-            this.Text = "Морковка";
+            this.Text = "Морковка Админ";
             this.Load += new System.EventHandler(this.TeacherForm_Load_1);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,10 +151,9 @@
         private System.Windows.Forms.ToolStripMenuItem изФайлаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изФайлаToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
     }
 }
 

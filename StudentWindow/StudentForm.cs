@@ -83,6 +83,8 @@ namespace MorkovkaAPI
             pictureBox1.Visible = false;
             label3.Visible = false;
             label2.Visible = false;
+            button1.Visible = false;
+            button2.Visible = false;
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,6 +105,27 @@ namespace MorkovkaAPI
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string path;
+            OpenFileDialog OPF = new OpenFileDialog();
+            OPF.Filter = "Test files(*.test)|*.test";
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                path = OPF.FileName;
+                TestParser parser = new TestParser(path);
+                parser.Parse();
+                TestProcessing game = new TestProcessing(parser.getRootLink());
+                myGUI = new StudentGUI(this, game);
+                myGUI.start();
+            }
+            pictureBox1.Visible = false;
+            label3.Visible = false;
+            label2.Visible = false;
+            button1.Visible = false;
+            button2.Visible = false;
         }
     }
 }
