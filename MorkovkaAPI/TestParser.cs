@@ -201,6 +201,7 @@ namespace MorkovkaAPI
             {
                 int numText = (entityRecords[entityNumber] as AnswerEntity).numText;
                 currentLink = new Answer(textEntityHandler(numText));
+                numbersLinks.Add(entityNumber, currentLink);
             }
             return currentLink;
         }
