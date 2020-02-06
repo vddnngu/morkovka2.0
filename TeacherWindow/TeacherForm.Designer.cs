@@ -65,7 +65,7 @@
             this.изФайлаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.изФайлаToolStripMenuItem1});
             this.изФайлаToolStripMenuItem.Name = "изФайлаToolStripMenuItem";
-            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.изФайлаToolStripMenuItem.Text = "Открыть";
             this.изФайлаToolStripMenuItem.Click += new System.EventHandler(this.изФайлаToolStripMenuItem_Click);
             // 
@@ -79,7 +79,7 @@
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
@@ -107,6 +107,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Создать";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 

@@ -30,7 +30,7 @@ namespace MorkovkaAPI
 
     public class AnswerEntity : RecEntity
     {
-        public int numText;
+        public List<int> numbersTextLines = new List<int>();
     }
 
     public class TextEntity : RecEntity
@@ -120,7 +120,11 @@ namespace MorkovkaAPI
         {
             AnswerEntity res = new AnswerEntity();
             res.num = Convert.ToInt32(strs[0]);
-            res.numText = Convert.ToInt32(strs[2]);
+            int numOfLines = Convert.ToInt32(strs[2]);
+            for (int i = 0; i < numOfLines; i++)
+            {
+                res.numbersTextLines.Add(Convert.ToInt32(strs[3 + i]));
+            }
             res.type = typeEntity.answer;
             return res;
         }
@@ -199,8 +203,13 @@ namespace MorkovkaAPI
             }
             else
             {
-                int numText = (entityRecords[entityNumber] as AnswerEntity).numText;
-                currentLink = new Answer(textEntityHandler(numText));
+                int countTextLines = (entityRecords[entityNumber] as AnswerEntity).numbersTextLines.Count;
+                String text = "";
+                for (int i = 0; i < countTextLines; i++)
+                {
+                    text += textEntityHandler((entityRecords[entityNumber] as AnswerEntity).numbersTextLines[i]) + "\n";
+                }
+                currentLink = new Answer(text);
             }
             return currentLink;
         }

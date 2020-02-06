@@ -33,6 +33,9 @@ namespace MorkovkaAPI
         public Question()
         {
             isQuest = true;
+            answers = new List<string>();
+            links = new List<Link>();
+            map = new Dictionary<string, int>();
         }
         public Question(String _text, List<String> _answers, List<Link> _links)
         {
@@ -65,6 +68,14 @@ namespace MorkovkaAPI
             links.Add(link);
             map[answer] = map.Count;
         }
+
+        public void replaceAnswerText(string oldText, string newText)
+        {
+            Link tmp = links[map[oldText]];
+            map.Remove(oldText);
+            answers[answers.IndexOf(oldText)] = newText;
+            map[newText] = links.IndexOf(tmp);
+        }
         public Link getNext(String answer)
         {
             return links[map[answer]];
@@ -84,10 +95,22 @@ namespace MorkovkaAPI
                 if (answers[i] == txt)
                 {
                     answers.RemoveAt(i);
+                    links.RemoveAt(i);
+                    renewMap();
                 }
             }
         }
+        void renewMap()
+        {
+            map.Clear();
+            for (int i = 0; i < answers.Count; i++)
+            {
+                map[answers[i]] = i;
+            }
+        }
     }
+
+    
     public class Answer : Link
     {
 

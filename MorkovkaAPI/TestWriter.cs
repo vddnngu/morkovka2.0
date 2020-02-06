@@ -65,7 +65,12 @@ namespace MorkovkaAPI
         private void writeAnswers(int num, Link link)
         {
             string str = "" + num;
-            str += "|A|" + addEntity(link.getText());
+            string[] strs = link.getText().Split('\n');
+            str += "|A|" + (strs.Length - 1);
+            for (int i = 0; i < strs.Length - 1; i++)
+            {
+                str += "|" + addEntity(strs[i]);
+            }
             str += "\n";
             testData += str;
         }

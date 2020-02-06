@@ -55,10 +55,10 @@ namespace MorkovkaAPI
                 Controls.Remove(it);
             }
         }
-        internal void addButtons(List<Button> buts)
+        internal void addAnswerButtons(List<Button> buts)
         {
             removeButtons();
-            
+
             var startPoint = new Point((int)(Width * 0.07), (int)(Height / 2));
             int buttonWidth = (int)(Width * 0.2);
             int buttonHeigth = (int)(Height * 0.1);
@@ -71,13 +71,24 @@ namespace MorkovkaAPI
                 this.Controls.Add(buts[i]);
                 buttonsForRemove.Add(buts[i]);
             }
-            editBut.Visible = true;
+
+
+
+        }
+        internal void addBackButton(Button but)
+        {
+            but.Location = new Point(50,400);
+            but.Width = 80;
+            but.Height = 30;
+            but.Font = new Font("Arial", 10, FontStyle.Regular);
+            this.Controls.Add(but);
+            buttonsForRemove.Add(but);
 
 
         }
         void editBut_Click(object sender, EventArgs e)
         {
-            EditForm form = new EditForm();
+            EditForm form = new EditForm(myGUI.getContext(), myGUI);
             form.setCurrentLink(myGUI.getCurrentLink());
             form.Show();
 
@@ -114,6 +125,7 @@ namespace MorkovkaAPI
             button1.Visible = false;
             button2.Visible = false;
             button3.Visible = false;
+            editBut.Visible = true;
         }
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -122,6 +134,7 @@ namespace MorkovkaAPI
             SaveFileDialog SFD = new SaveFileDialog();
             SFD.FileName = fileName;
             SFD.Filter = "test (*.test)|*.test";
+            mainLink = myGUI.getActualMainLink();
 
             if (SFD.ShowDialog() == DialogResult.OK)
             {
@@ -188,6 +201,19 @@ namespace MorkovkaAPI
             button1.Visible = false;
             button2.Visible = false;
             button3.Visible = false;
+            editBut.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mainLink = new Answer("Нажмите кнопку Edit!\n");
+            TestProcessing game = new TestProcessing(mainLink);
+            myGUI = new TeacherGUI(this, game);
+            myGUI.start();
+            button1.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
+            editBut.Visible = true;
         }
     }
 }
