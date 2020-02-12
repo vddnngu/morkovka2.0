@@ -215,5 +215,17 @@ namespace MorkovkaAPI
             button3.Visible = false;
             editBut.Visible = true;
         }
+
+        private void СоздатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainLink = new Answer("Нажмите кнопку Edit!\n");
+            TestProcessing game = new TestProcessing(mainLink);
+            myGUI = new TeacherGUI(this, game);
+            myGUI.start();
+            button1.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
+            editBut.Visible = true;
+        }
     }
 }

@@ -74,8 +74,8 @@ namespace MorkovkaAPI
             string tmp;
             while ((tmp = fin.ReadLine()) != "END.")
             {
-                if (tmp == "") continue;
                 string[] strs = tmp.Split('|');
+                if ((strs[0] == "") || (strs.Length < 2) || (strs[0][0] < '0' || strs[0][0] > '9')) continue;
                 AddEntity(strs);
             }
             creator.setRecords(entityRecords);
@@ -91,20 +91,29 @@ namespace MorkovkaAPI
         private void AddEntity(string[] strs)
         {
             RecEntity tmp;
-            if (strs[1] == "Q")
+            try
             {
-                tmp = CreateQwest(strs);
+                if (strs[1] == "Q")
+                {
+                    tmp = CreateQwest(strs);
+                }
+                else if (strs[1] == "A")
+                {
+                    tmp = CreateAnswer(strs);
+                }
+                else if (strs[1] == "T")
+                {
+                    tmp = CreateText(strs);
+                }
+                else tmp = null;
+                entityRecords[Convert.ToInt32(strs[0])] = tmp;
             }
-            else if (strs[1] == "A")
+            catch (Exception e)
             {
-                tmp = CreateAnswer(strs);
+                Console.WriteLine(e);
+                return;
             }
-            else if (strs[1] == "T")
-            {
-                tmp = CreateText(strs);
-            }
-            else tmp = null;
-            entityRecords[Convert.ToInt32(strs[0])] = tmp;        
+                   
         }
 
         private RecEntity CreateText(string[] strs)

@@ -108,6 +108,11 @@ namespace MorkovkaAPI
                 map[answers[i]] = i;
             }
         }
+
+        public void clearMap()
+        {
+            map.Clear();
+        }
     }
 
     

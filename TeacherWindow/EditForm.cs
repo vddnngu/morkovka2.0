@@ -16,18 +16,18 @@ namespace TeacherWindow
     {
         public String text;
         public Link link;
-        public bool needToAdd;
         public Tuple<TextBox, Button> GUIElem;
-        public EditAnswer (String _text, Link _link, bool _needToAdd, Tuple<TextBox, Button> _GUIElem)
+        public EditAnswer (String _text, Link _link, Tuple<TextBox, Button> _GUIElem)
         {
             text = _text;
             link = _link;
-            needToAdd = _needToAdd;
             GUIElem = _GUIElem;
         }
     }
     public partial class EditForm : Form
     {
+        bool needToRenewAnswers = false;
+        bool myTypeIsQuest;
         Link currentLink;
         Context context;
         List<EditAnswer> answerList;
@@ -42,7 +42,7 @@ namespace TeacherWindow
         }
         public void fillAnswerList()
         {
-
+            if (!currentLink.isQuestion()) return;
             answerList = new List<EditAnswer>();
             List<String> answers = (currentLink as Question).getAnswers();
 
@@ -57,7 +57,7 @@ namespace TeacherWindow
                 tmp2.Size = new Size(71, 19);
                 tmp2.Text = "DELETE";
                 tmp2.Click += new EventHandler(delAnswers);
-                answerList.Add(new EditAnswer(answers[i], (currentLink as Question).getNext(answers[i]), false, new Tuple<TextBox, Button>(tmp, tmp2)));
+                answerList.Add(new EditAnswer(answers[i], (currentLink as Question).getNext(answers[i]), new Tuple<TextBox, Button>(tmp, tmp2)));
             }
             displayAnswersList();
         }
@@ -79,7 +79,7 @@ namespace TeacherWindow
                 tmp2.Size = new Size(71, 19);
                 tmp2.Text = "DELETE";
                 tmp2.Click += new EventHandler(delAnswers);
-                answerList.Add(new EditAnswer(tmpList[i].text, tmpList[i].link, tmpList[i].needToAdd, new Tuple<TextBox, Button>(tmp, tmp2)));
+                answerList.Add(new EditAnswer(tmpList[i].text, tmpList[i].link, new Tuple<TextBox, Button>(tmp, tmp2)));
             }
         }
 
@@ -93,6 +93,7 @@ namespace TeacherWindow
                     Controls.Remove(answerList[i].GUIElem.Item2);
                 }
             }
+            correctAnswerList();
             for (int i = 0; i < answerList.Count; i++)
             {
                 this.Controls.Add(answerList[i].GUIElem.Item1);
@@ -103,7 +104,7 @@ namespace TeacherWindow
 
         private void delAnswers(object sender, EventArgs e)
         {
-
+            needToRenewAnswers = true;
             if (MessageBox.Show("Вы уверенны? Если вы удалите ответ, вернуть его не получиться. Только создать заново! ",
                 "Удаление ответа", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
@@ -116,7 +117,6 @@ namespace TeacherWindow
                     answerList.RemoveAt(i);
                 }
             }
-            correctAnswerList();
             displayAnswersList();
         }
 
@@ -124,7 +124,7 @@ namespace TeacherWindow
         {
             currentLink = link;
             richTextBox1.Text = currentLink.getText();
-            if (currentLink.isQuestion() == true)
+            if (myTypeIsQuest = currentLink.isQuestion() == true)
             {
                 radioButton2.Checked = true;
             }
@@ -132,6 +132,7 @@ namespace TeacherWindow
             {
                 radioButton1.Checked = true;
             }
+            fillAnswerList();
         }
         private void EditForm_Load(object sender, EventArgs e)
         {
@@ -141,45 +142,41 @@ namespace TeacherWindow
         {
             if (radioButton1.Checked == true)
             {
-                if (currentLink.isQuestion())
-                {
-                    if (context.prevLink != null)
-                        (context.prevLink as Question).removeAnswer(context.answerText);
-                    currentLink = new Answer(richTextBox1.Text);
-                    if (context.prevLink != null)
-                        (context.prevLink as Question).addAnswer(context.answerText, currentLink);
-                    mainGUI.renewCurLink(currentLink);
-                }
+                myTypeIsQuest = false;
+                
                 if(answerList!=null)
                     for (int i = 0; i < answerList.Count(); i++)
                     {
                         this.Controls.Remove(answerList[i].GUIElem.Item1);
                         this.Controls.Remove(answerList[i].GUIElem.Item2);
                     }
-                this.Controls.Remove(button1);
+                this.Controls.Remove(addAnswerButton);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addAnswerButton_Click(object sender, EventArgs e)
         {
-            if (radioButton2.Checked == true)
-            {
-                int i = answerList.Count();
-                TextBox tmp = new TextBox();
-                tmp.Location = new Point(16, 97 + 26 * i);
-                tmp.Size = new Size(256, 20);
-                tmp.Text = "Ответ " + (i+1);
-
-                Button tmp2 = new Button();
-                tmp2.Location = new Point(298, 97 + 26 * i);
-                tmp2.Size = new Size(71, 19);
-                tmp2.Text = "DELETE";
-                tmp2.Click += new EventHandler(delAnswers);
-
-                answerList.Add(new EditAnswer("Ответ "+(i+1), new Answer("Текст\n"), true, new Tuple<TextBox, Button>(tmp, tmp2)));
-                this.Controls.Add(tmp);
-                this.Controls.Add(tmp2);
+            if (answerList.Count == 4) {
+                MessageBox.Show("Кол-во ответов на один вопрос не может превышать 4. Для увеличения кол-ва ответов купите PRO версию.");
+                return;
             }
+            needToRenewAnswers = true;
+            int i = answerList.Count();
+            TextBox tmp = new TextBox();
+            tmp.Location = new Point(16, 97 + 26 * i);
+            tmp.Size = new Size(256, 20);
+            tmp.Text = "Ответ " + (i+1);
+
+            Button tmp2 = new Button();
+            tmp2.Location = new Point(298, 97 + 26 * i);
+            tmp2.Size = new Size(71, 19);
+            tmp2.Text = "DELETE";
+            tmp2.Click += new EventHandler(delAnswers);
+
+            answerList.Add(new EditAnswer("Ответ "+(i+1), new Answer("Текст\n"), new Tuple<TextBox, Button>(tmp, tmp2)));
+            this.Controls.Add(tmp);
+            this.Controls.Add(tmp2);
+
             //if (radioButton1.Checked == true)
             //{
             //    (currentLink as Answer).setText(richTextBox1.Text);
@@ -201,36 +198,24 @@ namespace TeacherWindow
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Вы уверенны?",
+                "Сохранение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
             string text = richTextBox1.Text;
-            if (text[text.Length-1] != '\n') text += '\n';
-            currentLink.setText(text);
-            if (currentLink.isQuestion() == true)
+            if (!myTypeIsQuest)
             {
-                for (int i = 0; i < answerList.Count; i++)
+                if (currentLink.isQuestion())
                 {
-                    if(answerList[i].needToAdd)
-                    {
-                        (currentLink as Question).addAnswer(answerList[i].GUIElem.Item1.Text, answerList[i].link);
-                    }
-                    else
-                    {
-                        if (answerList[i].text != answerList[i].GUIElem.Item1.Text)
-                        {
-                            (currentLink as Question).replaceAnswerText(answerList[i].text, answerList[i].GUIElem.Item1.Text);
-                        }
-                    }
+                    if (context.prevLink != null)
+                        (context.prevLink as Question).removeAnswer(context.answerText);
+                    currentLink = new Answer(richTextBox1.Text);
+                    if (context.prevLink != null)
+                        (context.prevLink as Question).addAnswer(context.answerText, currentLink);
+                    mainGUI.renewCurLink(currentLink);
                 }
-
             }
-            mainGUI.renewCurLink(currentLink);
-            Close();
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton2.Checked == true)
+            else
             {
-                if(!currentLink.isQuestion())
+                if (!currentLink.isQuestion())
                 {
                     if (context.prevLink != null)
                         (context.prevLink as Question).removeAnswer(context.answerText);
@@ -242,10 +227,42 @@ namespace TeacherWindow
                         (currentLink as Question).addAnswer(answerList[i].text, answerList[i].link);
                     }
                 }
-                fillAnswerList();
-                this.Controls.Add(button1);
+            }
+
+
+            if (text[text.Length-1] != '\n') text += '\n';
+                currentLink.setText(text);
+            if (currentLink.isQuestion() == true && needToRenewAnswers)
+            {
+                (currentLink as Question).getAnswers().Clear();
+                (currentLink as Question).getLinks().Clear();
+                (currentLink as Question).clearMap();
+                for (int i = 0; i < answerList.Count; i++)
+                {
+                    (currentLink as Question).addAnswer(answerList[i].GUIElem.Item1.Text, answerList[i].link);
+                }
+
+            }
+            mainGUI.renewCurLink(currentLink);
+            Close();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked == true)
+            {
+                myTypeIsQuest = true;
+                this.Controls.Add(addAnswerButton);
+                displayAnswersList();
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы уверенны? Ваши изменения будут потеряны!",
+                "Отмена", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+            Close();
         }
     }
 }

@@ -31,9 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.тестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изФайлаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cjвввафыаыфToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -54,34 +55,42 @@
             // тестToolStripMenuItem
             // 
             this.тестToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cjвввафыаыфToolStripMenuItem,
             this.изФайлаToolStripMenuItem,
             this.сохранитьToolStripMenuItem});
             this.тестToolStripMenuItem.Name = "тестToolStripMenuItem";
             this.тестToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.тестToolStripMenuItem.Text = "Тест";
             // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
             // изФайлаToolStripMenuItem
             // 
             this.изФайлаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.изФайлаToolStripMenuItem1});
             this.изФайлаToolStripMenuItem.Name = "изФайлаToolStripMenuItem";
-            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.изФайлаToolStripMenuItem.Text = "Открыть";
             this.изФайлаToolStripMenuItem.Click += new System.EventHandler(this.изФайлаToolStripMenuItem_Click);
             // 
             // изФайлаToolStripMenuItem1
             // 
             this.изФайлаToolStripMenuItem1.Name = "изФайлаToolStripMenuItem1";
-            this.изФайлаToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.изФайлаToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.изФайлаToolStripMenuItem1.Text = "Из файла";
             this.изФайлаToolStripMenuItem1.Click += new System.EventHandler(this.изФайлаToolStripMenuItem1_Click);
             // 
-            // сохранитьToolStripMenuItem
+            // cjвввафыаыфToolStripMenuItem
             // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
-            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            this.cjвввафыаыфToolStripMenuItem.Name = "cjвввафыаыфToolStripMenuItem";
+            this.cjвввафыаыфToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cjвввафыаыфToolStripMenuItem.Text = "Создать";
+            this.cjвввафыаыфToolStripMenuItem.Click += new System.EventHandler(this.СоздатьToolStripMenuItem_Click);
             // 
             // button2
             // 
@@ -155,6 +164,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripMenuItem cjвввафыаыфToolStripMenuItem;
     }
 }
 
