@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.тестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cjвввафыаыфToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изФайлаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cjвввафыаыфToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.createButton = new System.Windows.Forms.Button();
+            this.openButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,77 +59,77 @@
             this.изФайлаToolStripMenuItem,
             this.сохранитьToolStripMenuItem});
             this.тестToolStripMenuItem.Name = "тестToolStripMenuItem";
-            this.тестToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.тестToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.тестToolStripMenuItem.Text = "Тест";
             // 
-            // сохранитьToolStripMenuItem
+            // cjвввафыаыфToolStripMenuItem
             // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
-            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            this.cjвввафыаыфToolStripMenuItem.Name = "cjвввафыаыфToolStripMenuItem";
+            this.cjвввафыаыфToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.cjвввафыаыфToolStripMenuItem.Text = "Создать";
+            this.cjвввафыаыфToolStripMenuItem.Click += new System.EventHandler(this.СоздатьToolStripMenuItem_Click);
             // 
             // изФайлаToolStripMenuItem
             // 
             this.изФайлаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.изФайлаToolStripMenuItem1});
             this.изФайлаToolStripMenuItem.Name = "изФайлаToolStripMenuItem";
-            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.изФайлаToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.изФайлаToolStripMenuItem.Text = "Открыть";
             this.изФайлаToolStripMenuItem.Click += new System.EventHandler(this.изФайлаToolStripMenuItem_Click);
             // 
             // изФайлаToolStripMenuItem1
             // 
             this.изФайлаToolStripMenuItem1.Name = "изФайлаToolStripMenuItem1";
-            this.изФайлаToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.изФайлаToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
             this.изФайлаToolStripMenuItem1.Text = "Из файла";
             this.изФайлаToolStripMenuItem1.Click += new System.EventHandler(this.изФайлаToolStripMenuItem1_Click);
             // 
-            // cjвввафыаыфToolStripMenuItem
+            // сохранитьToolStripMenuItem
             // 
-            this.cjвввафыаыфToolStripMenuItem.Name = "cjвввафыаыфToolStripMenuItem";
-            this.cjвввафыаыфToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cjвввафыаыфToolStripMenuItem.Text = "Создать";
-            this.cjвввафыаыфToolStripMenuItem.Click += new System.EventHandler(this.СоздатьToolStripMenuItem_Click);
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
-            // button2
+            // exitButton
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(223, 322);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(288, 70);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Выход";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.exitButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.exitButton.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold);
+            this.exitButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.exitButton.Location = new System.Drawing.Point(223, 322);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(288, 70);
+            this.exitButton.TabIndex = 6;
+            this.exitButton.Text = "Выход";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // button1
+            // createButton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(223, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(288, 70);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.createButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.createButton.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.createButton.Location = new System.Drawing.Point(223, 219);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(288, 70);
+            this.createButton.TabIndex = 7;
+            this.createButton.Text = "Создать";
+            this.createButton.UseVisualStyleBackColor = false;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
-            // button3
+            // openButton
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button3.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(223, 116);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(288, 70);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Открыть";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.openButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.openButton.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold);
+            this.openButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.openButton.Location = new System.Drawing.Point(223, 116);
+            this.openButton.Name = "openButton";
+            this.openButton.Size = new System.Drawing.Size(288, 70);
+            this.openButton.TabIndex = 8;
+            this.openButton.Text = "Открыть";
+            this.openButton.UseVisualStyleBackColor = false;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
             // TeacherForm
             // 
@@ -137,9 +137,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(748, 452);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.openButton);
+            this.Controls.Add(this.createButton);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -161,9 +161,9 @@
         private System.Windows.Forms.ToolStripMenuItem изФайлаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изФайлаToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.ToolStripMenuItem cjвввафыаыфToolStripMenuItem;
     }
 }

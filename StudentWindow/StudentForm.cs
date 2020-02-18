@@ -80,11 +80,11 @@ namespace MorkovkaAPI
                 myGUI = new StudentGUI(this, game);
                 myGUI.start();
             }
-            pictureBox1.Visible = false;
-            label3.Visible = false;
-            label2.Visible = false;
-            button1.Visible = false;
-            button2.Visible = false;
+            pictureBox.Visible = false;
+            selectTestLabel.Visible = false;
+            toStartLabel.Visible = false;
+            exitButton.Visible = false;
+            openButton.Visible = false;
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,22 +92,22 @@ namespace MorkovkaAPI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void toStartLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void selectTestLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void openButton_Click(object sender, EventArgs e)
         {
             string path;
             OpenFileDialog OPF = new OpenFileDialog();
@@ -121,11 +121,11 @@ namespace MorkovkaAPI
                 myGUI = new StudentGUI(this, game);
                 myGUI.start();
             }
-            pictureBox1.Visible = false;
-            label3.Visible = false;
-            label2.Visible = false;
-            button1.Visible = false;
-            button2.Visible = false;
+            pictureBox.Visible = false;
+            selectTestLabel.Visible = false;
+            toStartLabel.Visible = false;
+            exitButton.Visible = false;
+            openButton.Visible = false;
         }
     }
 }

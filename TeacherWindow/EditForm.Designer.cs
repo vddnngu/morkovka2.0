@@ -28,56 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.answerRadioButton = new System.Windows.Forms.RadioButton();
+            this.questRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.changeQuestTextBox = new System.Windows.Forms.RichTextBox();
             this.addAnswerButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // answerRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(3, 26);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(60, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Answer";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.answerRadioButton.AutoSize = true;
+            this.answerRadioButton.Location = new System.Drawing.Point(3, 26);
+            this.answerRadioButton.Name = "answerRadioButton";
+            this.answerRadioButton.Size = new System.Drawing.Size(60, 17);
+            this.answerRadioButton.TabIndex = 0;
+            this.answerRadioButton.TabStop = true;
+            this.answerRadioButton.Text = "Answer";
+            this.answerRadioButton.UseVisualStyleBackColor = true;
+            this.answerRadioButton.CheckedChanged += new System.EventHandler(this.answerRadioButton_CheckedChanged);
             // 
-            // radioButton2
+            // questRadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(3, 4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(67, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Question";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.questRadioButton.AutoSize = true;
+            this.questRadioButton.Location = new System.Drawing.Point(3, 4);
+            this.questRadioButton.Name = "questRadioButton";
+            this.questRadioButton.Size = new System.Drawing.Size(67, 17);
+            this.questRadioButton.TabIndex = 1;
+            this.questRadioButton.Text = "Question";
+            this.questRadioButton.UseVisualStyleBackColor = true;
+            this.questRadioButton.CheckedChanged += new System.EventHandler(this.questRadioButton_CheckedChanged);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.questRadioButton);
+            this.panel1.Controls.Add(this.answerRadioButton);
             this.panel1.Location = new System.Drawing.Point(16, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(71, 49);
             this.panel1.TabIndex = 2;
             // 
-            // richTextBox1
+            // changeQuestTextBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(102, 15);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(268, 47);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.changeQuestTextBox.Location = new System.Drawing.Point(102, 15);
+            this.changeQuestTextBox.Name = "changeQuestTextBox";
+            this.changeQuestTextBox.Size = new System.Drawing.Size(268, 47);
+            this.changeQuestTextBox.TabIndex = 4;
+            this.changeQuestTextBox.Text = "";
+            this.changeQuestTextBox.TextChanged += new System.EventHandler(this.changeQuestTextBox_TextChanged);
             // 
             // addAnswerButton
             // 
@@ -89,25 +89,25 @@
             this.addAnswerButton.UseVisualStyleBackColor = true;
             this.addAnswerButton.Click += new System.EventHandler(this.addAnswerButton_Click);
             // 
-            // button2
+            // saveButton
             // 
-            this.button2.Location = new System.Drawing.Point(324, 339);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.saveButton.Location = new System.Drawing.Point(324, 339);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 6;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // button1
+            // cancelButton
             // 
-            this.button1.Location = new System.Drawing.Point(405, 339);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cancelButton.Location = new System.Drawing.Point(405, 339);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 7;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // EditForm
             // 
@@ -115,10 +115,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(486, 374);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addAnswerButton);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.changeQuestTextBox);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EditForm";
@@ -132,12 +132,12 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton answerRadioButton;
+        private System.Windows.Forms.RadioButton questRadioButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox changeQuestTextBox;
         private System.Windows.Forms.Button addAnswerButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

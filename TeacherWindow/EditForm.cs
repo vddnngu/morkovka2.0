@@ -123,14 +123,14 @@ namespace TeacherWindow
         public void setCurrentLink(Link link)
         {
             currentLink = link;
-            richTextBox1.Text = currentLink.getText();
+            changeQuestTextBox.Text = currentLink.getText();
             if (myTypeIsQuest = currentLink.isQuestion() == true)
             {
-                radioButton2.Checked = true;
+                questRadioButton.Checked = true;
             }
             else
             {
-                radioButton1.Checked = true;
+                answerRadioButton.Checked = true;
             }
             fillAnswerList();
         }
@@ -138,9 +138,9 @@ namespace TeacherWindow
         {
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void answerRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked == true)
+            if (answerRadioButton.Checked == true)
             {
                 myTypeIsQuest = false;
                 
@@ -191,23 +191,23 @@ namespace TeacherWindow
 
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void changeQuestTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы уверенны?",
                 "Сохранение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
-            string text = richTextBox1.Text;
+            string text = changeQuestTextBox.Text;
             if (!myTypeIsQuest)
             {
                 if (currentLink.isQuestion())
                 {
                     if (context.prevLink != null)
                         (context.prevLink as Question).removeAnswer(context.answerText);
-                    currentLink = new Answer(richTextBox1.Text);
+                    currentLink = new Answer(changeQuestTextBox.Text);
                     if (context.prevLink != null)
                         (context.prevLink as Question).addAnswer(context.answerText, currentLink);
                     mainGUI.renewCurLink(currentLink);
@@ -219,7 +219,7 @@ namespace TeacherWindow
                 {
                     if (context.prevLink != null)
                         (context.prevLink as Question).removeAnswer(context.answerText);
-                    currentLink = new Question(richTextBox1.Text);
+                    currentLink = new Question(changeQuestTextBox.Text);
                     if (context.prevLink != null)
                         (context.prevLink as Question).addAnswer(context.answerText, currentLink);
                     for (int i = 0; i < answerList.Count; i++)
@@ -247,9 +247,9 @@ namespace TeacherWindow
             Close();
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void questRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked == true)
+            if (questRadioButton.Checked == true)
             {
                 myTypeIsQuest = true;
                 this.Controls.Add(addAnswerButton);
@@ -258,7 +258,7 @@ namespace TeacherWindow
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы уверенны? Ваши изменения будут потеряны!",
                 "Отмена", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;

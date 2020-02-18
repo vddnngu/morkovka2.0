@@ -122,9 +122,9 @@ namespace MorkovkaAPI
                 myGUI = new TeacherGUI(this, game);
                 myGUI.start();
             }
-            button1.Visible = false;
-            button2.Visible = false;
-            button3.Visible = false;
+            createButton.Visible = false;
+            exitButton.Visible = false;
+            openButton.Visible = false;
             editBut.Visible = true;
         }
 
@@ -176,12 +176,12 @@ namespace MorkovkaAPI
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void openButton_Click(object sender, EventArgs e)
         {
             string path;
             OpenFileDialog OPF = new OpenFileDialog();
@@ -198,21 +198,21 @@ namespace MorkovkaAPI
                 myGUI = new TeacherGUI(this, game);
                 myGUI.start();
             }
-            button1.Visible = false;
-            button2.Visible = false;
-            button3.Visible = false;
+            createButton.Visible = false;
+            exitButton.Visible = false;
+            openButton.Visible = false;
             editBut.Visible = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void createButton_Click(object sender, EventArgs e)
         {
             mainLink = new Answer("Нажмите кнопку Edit!\n");
             TestProcessing game = new TestProcessing(mainLink);
             myGUI = new TeacherGUI(this, game);
             myGUI.start();
-            button1.Visible = false;
-            button2.Visible = false;
-            button3.Visible = false;
+            createButton.Visible = false;
+            exitButton.Visible = false;
+            openButton.Visible = false;
             editBut.Visible = true;
         }
 
@@ -222,9 +222,9 @@ namespace MorkovkaAPI
             TestProcessing game = new TestProcessing(mainLink);
             myGUI = new TeacherGUI(this, game);
             myGUI.start();
-            button1.Visible = false;
-            button2.Visible = false;
-            button3.Visible = false;
+            createButton.Visible = false;
+            exitButton.Visible = false;
+            openButton.Visible = false;
             editBut.Visible = true;
         }
     }
