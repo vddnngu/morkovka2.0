@@ -163,8 +163,8 @@
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button createButton;
-        private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.ToolStripMenuItem cjвввафыаыфToolStripMenuItem;
+        private System.Windows.Forms.Button openButton;
     }
 }
 

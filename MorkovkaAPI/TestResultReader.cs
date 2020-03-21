@@ -23,7 +23,7 @@ namespace MorkovkaAPI
         FileStream file;
         StreamReader fin;
         string testPath;
-        List<ResEntity> resEntities;
+        public List<ResEntity> resEntities;
         public TestResultParser(string _path)
         {
             path = _path;
@@ -31,7 +31,7 @@ namespace MorkovkaAPI
             fin = new StreamReader(file);
 
         }
-        void ParseHeader()
+        public void ParseHeader()
         {
             string tmp;
             while ((tmp = fin.ReadLine()) != "END HEADER")
@@ -45,11 +45,13 @@ namespace MorkovkaAPI
                 }  
             }
         }
-        void Parse()
+        public void Parse()
         {
+            resEntities = new List<ResEntity>();
             string tmp;
             while ((tmp = fin.ReadLine()) != "END")
             {
+                if (tmp == "") continue;
                 string[] strs = tmp.Split('|');
                 ResEntity entity = new ResEntity();
                 entity.name = strs[0];
@@ -65,7 +67,7 @@ namespace MorkovkaAPI
     }
     public class ResultCreator
     {
-        List<TestResult> testResults;
+        List<TestResult> testResults = new List<TestResult>();
         TestResult entityHandler(ResEntity _resEntity)
         {
             TestResult result = new TestResult();
@@ -79,6 +81,37 @@ namespace MorkovkaAPI
                 result.getListAnswers().Add(Convert.ToInt32(strs[i]));
             }
             return result;
+        }
+        public List<TestResult> getTestResults (List<ResEntity> _resEntity)
+        {
+            
+            TestParser parser = new TestParser(_resEntity[0].testPath);
+            parser.Parse();
+            TestProcessing game = new TestProcessing(parser.getRootLink());
+            for (int i=0; i<_resEntity.Count; i++)
+            {
+                TestResult result = entityHandler(_resEntity[i]);
+                result.setTestProcessing(game);
+                testResults.Add(result);
+            }
+            return testResults;
+        }
+
+        public List<TestResult> getListTestResult()
+        {
+            return testResults;
+        }
+    }
+    public class GetTestResult
+    {
+        public static List<TestResult> getTestResults(string _path)
+        {
+            TestResultParser parser = new TestResultParser(_path);
+            parser.ParseHeader();
+            parser.Parse();
+            ResultCreator resultCreator = new ResultCreator();
+            List<TestResult> testResults = new List<TestResult>();
+            return resultCreator.getTestResults(parser.resEntities);
         }
     }
 

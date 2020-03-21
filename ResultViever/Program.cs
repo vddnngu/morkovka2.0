@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MorkovkaAPI
+namespace ResultViever
 {
     static class Program
     {
@@ -16,9 +16,7 @@ namespace MorkovkaAPI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TeacherForm());
-            
-
+            Application.Run(new Form1());
         }
     }
 }
