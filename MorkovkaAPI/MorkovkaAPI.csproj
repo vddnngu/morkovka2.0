@@ -42,11 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Link.cs" />
+    <Compile Include="MorkovkaUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestParser.cs" />
     <Compile Include="TestProcessing.cs" />
     <Compile Include="TestResult.cs" />
     <Compile Include="TestResultReader.cs" />
+    <Compile Include="TestResultWriter.cs" />
     <Compile Include="TestWriter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

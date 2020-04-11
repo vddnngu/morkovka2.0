@@ -15,6 +15,7 @@ namespace MorkovkaAPI
         Label mainTextLable;
         StudentGUI myGUI;
         List<Button> buttonsForRemove = new List<Button>();
+        TestResultWriter resultWriter;
         int j = 0;
         public Form1()
         {
@@ -79,9 +80,11 @@ namespace MorkovkaAPI
                 TestProcessing game = new TestProcessing(parser.getRootLink());
                 myGUI = new StudentGUI(this, game);
                 myGUI.start();
+                
+
             }
             pictureBox.Visible = false;
-            selectTestLabel.Visible = false;
+
             toStartLabel.Visible = false;
             exitButton.Visible = false;
             openButton.Visible = false;
@@ -97,6 +100,7 @@ namespace MorkovkaAPI
             this.Close();
         }
 
+
         private void toStartLabel_Click(object sender, EventArgs e)
         {
 
@@ -109,23 +113,45 @@ namespace MorkovkaAPI
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            string path;
-            OpenFileDialog OPF = new OpenFileDialog();
-            OPF.Filter = "Test files(*.test)|*.test";
-            if (OPF.ShowDialog() == DialogResult.OK)
+            if (richTextBox1.Text != "")
             {
-                path = OPF.FileName;
-                TestParser parser = new TestParser(path);
-                parser.Parse();
-                TestProcessing game = new TestProcessing(parser.getRootLink());
-                myGUI = new StudentGUI(this, game);
-                myGUI.start();
+                
+                string path;
+                OpenFileDialog OPF = new OpenFileDialog();
+                OPF.Filter = "Test files(*.test)|*.test";
+                if (OPF.ShowDialog() == DialogResult.OK)
+                {
+                    path = OPF.FileName;
+                    TestParser parser = new TestParser(path);
+                    parser.Parse();
+                    TestResultParser resultParser = new TestResultParser(path.Replace(".test",".res"));
+                    resultParser.allParse();
+                    TestProcessing game = new TestProcessing(parser.getRootLink());
+                    game.setTestResult(resultParser.getTestResult());
+                    myGUI = new StudentGUI(this, game);
+                    game.setUserName(richTextBox1.Text);
+                    game.setPath(OPF.FileName);
+                    myGUI.start();
+                }
+                pictureBox.Visible = false;
+
+                toStartLabel.Visible = false;
+                exitButton.Visible = false;
+                openButton.Visible = false;
             }
-            pictureBox.Visible = false;
-            selectTestLabel.Visible = false;
-            toStartLabel.Visible = false;
-            exitButton.Visible = false;
-            openButton.Visible = false;
+            else {
+                MessageBox.Show("Необходимо ввести имя");
+                    return; }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,6 +31,25 @@ namespace MorkovkaAPI
             fin = new StreamReader(file);
 
         }
+        public TestResult getTestResult()
+        {
+            ResultCreator creator = new ResultCreator();
+            List<Attempt> attempt = creator.getTestResults(resEntities);
+            TestParser testParser = new TestParser(testPath);
+            testParser.Parse();
+            TestProcessing game = new TestProcessing(testParser.getRootLink());
+            TestResult testResult = new TestResult();
+            testResult.setTestProcessing(game);
+            testResult.setAttempts(attempt);
+            testResult.setTestPath(testPath);
+            testResult.setOwnPath(path);
+            return testResult;
+        }
+        public void allParse()
+        {
+            ParseHeader();
+            Parse();
+        }
         public void ParseHeader()
         {
             string tmp;
@@ -67,10 +86,10 @@ namespace MorkovkaAPI
     }
     public class ResultCreator
     {
-        List<TestResult> testResults = new List<TestResult>();
-        TestResult entityHandler(ResEntity _resEntity)
+        List<Attempt> attempts = new List<Attempt>();
+        public Attempt entityHandler(ResEntity _resEntity)
         {
-            TestResult result = new TestResult();
+            Attempt result = new Attempt();
             result.setName(_resEntity.name);
             result.setDate(new Date(_resEntity.date));
             result.setTimeStart(new Time(_resEntity.start));
@@ -82,37 +101,21 @@ namespace MorkovkaAPI
             }
             return result;
         }
-        public List<TestResult> getTestResults (List<ResEntity> _resEntity)
+        public List<Attempt> getTestResults (List<ResEntity> _resEntity)
         {
-            
             TestParser parser = new TestParser(_resEntity[0].testPath);
             parser.Parse();
             TestProcessing game = new TestProcessing(parser.getRootLink());
             for (int i=0; i<_resEntity.Count; i++)
             {
-                TestResult result = entityHandler(_resEntity[i]);
+                Attempt result = entityHandler(_resEntity[i]);
                 result.setTestProcessing(game);
-                testResults.Add(result);
+                attempts.Add(result);
             }
-            return testResults;
+            return attempts;
         }
 
-        public List<TestResult> getListTestResult()
-        {
-            return testResults;
-        }
-    }
-    public class GetTestResult
-    {
-        public static List<TestResult> getTestResults(string _path)
-        {
-            TestResultParser parser = new TestResultParser(_path);
-            parser.ParseHeader();
-            parser.Parse();
-            ResultCreator resultCreator = new ResultCreator();
-            List<TestResult> testResults = new List<TestResult>();
-            return resultCreator.getTestResults(parser.resEntities);
-        }
+ 
     }
 
 }

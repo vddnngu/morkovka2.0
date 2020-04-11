@@ -38,7 +38,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.hScrollBar1);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(57, 46);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(671, 333);
@@ -53,9 +52,9 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(3, 62);
+            this.panel2.Location = new System.Drawing.Point(57, 112);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(665, 174);
+            this.panel2.Size = new System.Drawing.Size(665, 161);
             this.panel2.TabIndex = 1;
             // 
             // button1
@@ -74,6 +73,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";

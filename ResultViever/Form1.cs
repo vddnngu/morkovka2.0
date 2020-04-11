@@ -52,16 +52,24 @@ namespace ResultViever
                 buttons[i].Text = testProcessing.getAnswers()[results[1].getListAnswers()[i]];
                 ToolTip toolTip1 = new ToolTip();
                 toolTip1.SetToolTip(buttons[i], testProcessing.getCurLink().getText());
-
-                PictureBox pb = new PictureBox();
-                pb.Image = new Bitmap("C:/морковка/Pm5ZL.png");
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Size = new Size(60, buttons[i].Height);
-                pb.Location = new Point(buttons[i].Width * (i + 1) + 60 * i, 35);
-                panel2.Controls.Add(pb);
+                if (i != buttons.Count-1)
+                {
+                    PictureBox pb = new PictureBox();
+                    pb.Image = new Bitmap("C:/морковка/Pm5ZL.png");
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pb.Size = new Size(60, buttons[i].Height);
+                    pb.Location = new Point(buttons[i].Width * (i + 1) + 60 * i, 35);
+                    panel2.Controls.Add(pb);
+                }
 
                 testProcessing.goNext(buttons[i].Text);
             }
+            Label label = new Label();
+            label.Text = testProcessing.getCurLinkText();
+            label.Font = new Font("Arial", 20, FontStyle.Regular);
+            label.AutoSize = true;
+            label.Location = new Point(panel1.Width/2-label.Width/2, panel1.Height-100);
+            panel1.Controls.Add(label);
         }
 
         private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
@@ -84,13 +92,18 @@ namespace ResultViever
             string path;
             OpenFileDialog OPF = new OpenFileDialog();
             OPF.Filter = "Test files(*.res)|*.res";
-            TestResultParser resultParser = new TestResultParser(OPF.FileName);
-            resultParser.ParseHeader();
-            resultParser.Parse();
-            ResultCreator resultCreator = new ResultCreator();
-            results = resultCreator.getTestResults(resultParser.resEntities);
-            testProcessing= results[1].getTestProcessing();
-            locateButtons();
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                
+                TestResultParser resultParser = new TestResultParser(OPF.FileName);
+                resultParser.ParseHeader();
+                resultParser.Parse();
+                ResultCreator resultCreator = new ResultCreator();
+                results = resultCreator.getTestResults(resultParser.resEntities);
+                testProcessing = results[1].getTestProcessing();
+                
+                locateButtons();
+            }
 
         }
 

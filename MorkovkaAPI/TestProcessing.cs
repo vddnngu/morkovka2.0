@@ -17,6 +17,10 @@ namespace MorkovkaAPI
         Context context;
         Stack<Link> history;
         Stack<Context> contextHistory;
+        MorkovkaUser curUser = new MorkovkaUser();
+        Attempt curAttempt;
+        TestResult testResult;
+        string path;
 
         public TestProcessing(Link root)
         {
@@ -40,6 +44,14 @@ namespace MorkovkaAPI
         }
         public string getCurLinkText()
         {
+            if (curAttempt == null)
+            {
+                curAttempt = new Attempt();
+                curAttempt.setName(curUser.getName());
+                curAttempt.setDate(new Date(DateTime.Now));
+                curAttempt.setTimeStart(new Time(DateTime.Now));
+
+            }
             return currentLink.getText();
         }
         public bool curLinkIsQuestion()
@@ -47,7 +59,7 @@ namespace MorkovkaAPI
             return currentLink.isQuestion();
         }
         public Link getCurLink()
-        {
+        { 
             return currentLink;
         }
         public bool goNext(String answer)
@@ -55,9 +67,15 @@ namespace MorkovkaAPI
             if (!currentLink.isQuestion()) throw new Exception("Answer has not next");
             context.answerText = answer;
             context.prevLink = currentLink;
+            curAttempt.addTestAnswer((currentLink as Question).getAnswers().IndexOf(answer));
             history.Push(currentLink);
             contextHistory.Push(context);
             currentLink = (currentLink as Question).getNext(answer);
+            if (currentLink.isQuestion()==false)
+            {
+                curAttempt.setTimeFinish(new Time(DateTime.Now));
+                testResult.addAttempt(curAttempt);
+            }
             return currentLink.isQuestion();
         }
 
@@ -85,9 +103,29 @@ namespace MorkovkaAPI
                 mainLink = currentLink = newCurrent;
             currentLink = newCurrent;
         }
+        public void setTestResult(TestResult _testResult)
+        {
+            testResult = _testResult;
+        }
         public Link getMainLink()
         {
             return mainLink;
+        }
+        public void setUserName( string _name)
+        {
+            curUser.setName(_name);
+        }
+        public void getUserName()
+        {
+            curUser.getName();
+        }
+        public void setPath(string _path)
+        {
+            path = _path;
+        }
+        public string getPath()
+        {
+            return path;
         }
     }
 }

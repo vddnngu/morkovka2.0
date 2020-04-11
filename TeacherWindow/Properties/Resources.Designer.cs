@@ -73,26 +73,6 @@ namespace TeacherWindow.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _aK98D5x67s {
-            get {
-                object obj = ResourceManager.GetObject("_aK98D5x67s", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap wp {
-            get {
-                object obj = ResourceManager.GetObject("wp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Без_имени_2 {
             get {
                 object obj = ResourceManager.GetObject("Без имени-2", resourceCulture);

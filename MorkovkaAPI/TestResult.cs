@@ -18,6 +18,19 @@ namespace MorkovkaAPI
             month = Convert.ToInt32(strs[1]);
             year = Convert.ToInt32(strs[2]);
         }
+        public string ToString()
+        {
+            string str = "";
+            str += Convert.ToString(day) + "." + Convert.ToString(month) + "." + Convert.ToString(year);
+            return str;
+
+        }
+        public Date(DateTime dateTime)
+        {
+            year = dateTime.Year;
+            month = dateTime.Month;
+            day = dateTime.Day;
+        }
     }
     public class Time
     {
@@ -31,6 +44,12 @@ namespace MorkovkaAPI
             minute = Convert.ToInt32(strs[1]);
             seconds = Convert.ToInt32(strs[2]);
         }
+        public Time(DateTime time)
+        {
+            hour = time.Hour;
+            minute = time.Minute;
+            seconds = time.Second;
+        }
         public static int operator-(Time op1, Time op2)
         {
             int h = op1.hour - op2.hour;
@@ -38,9 +57,15 @@ namespace MorkovkaAPI
             int s= op1.seconds - op2.seconds;
             return h * 3600 + m * 60 + s;
         }
+        public string ToString()
+        {
+            string str = "";
+            str += Convert.ToString(hour)+":" + Convert.ToString(minute)+":" + Convert.ToString(seconds);
+            return str;
+        }
 
     }
-    public class TestResult
+    public class Attempt
     {
         string name;
         Date date;
@@ -48,7 +73,7 @@ namespace MorkovkaAPI
         Time finish;
         TestProcessing test;
         List<int> answers;
-        
+
         public void setName(string _name)
         {
             name = _name;
@@ -97,9 +122,66 @@ namespace MorkovkaAPI
         {
             return answers;
         }
-        public TestResult()
+        public void addTestAnswer(int ans)
+        {
+            answers.Add(ans);
+        }
+        public Attempt()
         {
             answers = new List<int>();
+        }
+    }
+    public class TestResult
+    {
+        TestProcessing test;
+        string testPath;
+        string ownPath;
+        List<Attempt> attempts = new List<Attempt>();
+
+        public void setTestProcessing(TestProcessing _test)
+        {
+            test = _test;
+        }
+        public TestProcessing getTestProcessing()
+        {
+            return test;
+        }
+        public TestResult()
+        {
+            attempts = new List<Attempt>();
+        }
+        public void setAttempts(List<Attempt> _attempts)
+        {
+            attempts = _attempts;
+        }
+        public List<Attempt> GetAttempts()
+        {
+            return attempts;
+        }
+        public void addAttempt(Attempt attempt)
+        {
+            attempts.Add(attempt);
+        }
+        public void setTestPath(string _testPath)
+        {
+            testPath = _testPath;
+        }
+        public string getTestPath()
+        {
+            return testPath;
+        }
+        public void setOwnPath(string _ownPath)
+        {
+            ownPath = _ownPath;
+        }
+        public string getOwnPath()
+        {
+            return ownPath;
+        }
+        public void reWrite()
+        {
+            TestResultWriter resultWriter = new TestResultWriter(this);
+            resultWriter.Save(ownPath);
         }
     }
 }

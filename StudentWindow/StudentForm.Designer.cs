@@ -35,9 +35,10 @@
             this.изФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.toStartLabel = new System.Windows.Forms.Label();
-            this.selectTestLabel = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
             this.openButton = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -90,30 +91,19 @@
             // 
             this.toStartLabel.AutoSize = true;
             this.toStartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.toStartLabel.Location = new System.Drawing.Point(355, 143);
+            this.toStartLabel.Location = new System.Drawing.Point(389, 127);
             this.toStartLabel.Name = "toStartLabel";
-            this.toStartLabel.Size = new System.Drawing.Size(259, 39);
+            this.toStartLabel.Size = new System.Drawing.Size(320, 39);
             this.toStartLabel.TabIndex = 4;
-            this.toStartLabel.Text = "Чтобы начать, ";
+            this.toStartLabel.Text = "Введите ваше имя";
             this.toStartLabel.Click += new System.EventHandler(this.toStartLabel_Click);
-            // 
-            // selectTestLabel
-            // 
-            this.selectTestLabel.AutoSize = true;
-            this.selectTestLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.selectTestLabel.Location = new System.Drawing.Point(527, 182);
-            this.selectTestLabel.Name = "selectTestLabel";
-            this.selectTestLabel.Size = new System.Drawing.Size(261, 39);
-            this.selectTestLabel.TabIndex = 5;
-            this.selectTestLabel.Text = " выберите тест";
-            this.selectTestLabel.Click += new System.EventHandler(this.selectTestLabel_Click);
             // 
             // exitButton
             // 
             this.exitButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exitButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.exitButton.Location = new System.Drawing.Point(619, 388);
+            this.exitButton.Location = new System.Drawing.Point(624, 375);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(149, 50);
             this.exitButton.TabIndex = 6;
@@ -126,7 +116,7 @@
             this.openButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.openButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.openButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.openButton.Location = new System.Drawing.Point(455, 388);
+            this.openButton.Location = new System.Drawing.Point(587, 200);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(149, 50);
             this.openButton.TabIndex = 7;
@@ -134,15 +124,36 @@
             this.openButton.UseVisualStyleBackColor = false;
             this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.richTextBox1.Location = new System.Drawing.Point(396, 197);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(164, 53);
+            this.richTextBox1.TabIndex = 8;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(519, 390);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 35);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.openButton);
             this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.selectTestLabel);
             this.Controls.Add(this.toStartLabel);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.menuStrip1);
@@ -168,9 +179,10 @@
         private System.Windows.Forms.ToolStripMenuItem изФайлаToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Label toStartLabel;
-        private System.Windows.Forms.Label selectTestLabel;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button openButton;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
