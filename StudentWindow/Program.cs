@@ -25,15 +25,8 @@ namespace MorkovkaAPI
             //TestResultParser resultParser1 = new TestResultParser("C:/Users/Настя/Documents/HEADER.0.2.res");
             //resultParser1.ParseHeader();
             //resultParser1.Parse();
-            //TestResultWriter testResultWriter1 = new TestResultWriter(resultParser1.getTestResult());
-            //testResultWriter1.Save("C:/Users/Настя/Documents/HEADER.0.3.res");
-            //TestResultParser resultParser2 = new TestResultParser("C:/Users/Настя/Documents/HEADER.0.3.res");
-            //resultParser2.ParseHeader();
-            //resultParser2.Parse();
-            //TestResultWriter testResultWriter2 = new TestResultWriter(resultParser2.getTestResult());
-            //testResultWriter2.Save("C:/Users/Настя/Documents/HEADER.0.4.res");
-            //Console.WriteLine(DateTime.Now);
- 
+
+
         }
     }
 }

@@ -21,12 +21,21 @@ namespace MorkovkaAPI
         Attempt curAttempt;
         TestResult testResult;
         string path;
+        Boolean curUserIsTeacher;
 
         public TestProcessing(Link root)
         {
             history = new Stack<Link>();
             contextHistory = new Stack<Context>();
             currentLink = mainLink = root;
+        }
+        public void setCurUserIsTeacher(Boolean name)
+        {
+            curUserIsTeacher = name;
+        }
+        public Boolean getCurUserIsTeacher()
+        {
+            return curUserIsTeacher;
         }
         public List<String> getAnswers()
         {
@@ -44,7 +53,7 @@ namespace MorkovkaAPI
         }
         public string getCurLinkText()
         {
-            if (curAttempt == null)
+            if ((curAttempt == null)  && (curUserIsTeacher == false))
             {
                 curAttempt = new Attempt();
                 curAttempt.setName(curUser.getName());
@@ -67,18 +76,25 @@ namespace MorkovkaAPI
             if (!currentLink.isQuestion()) throw new Exception("Answer has not next");
             context.answerText = answer;
             context.prevLink = currentLink;
-            curAttempt.addTestAnswer((currentLink as Question).getAnswers().IndexOf(answer));
+            if (curUserIsTeacher == false)
+            {
+                curAttempt.addTestAnswer((currentLink as Question).getAnswers().IndexOf(answer));
+            }
             history.Push(currentLink);
             contextHistory.Push(context);
             currentLink = (currentLink as Question).getNext(answer);
-            if (currentLink.isQuestion()==false)
+            if ((currentLink.isQuestion()==false)  && (curUserIsTeacher == false))
             {
                 curAttempt.setTimeFinish(new Time(DateTime.Now));
                 testResult.addAttempt(curAttempt);
+                testResult.reWrite();
             }
             return currentLink.isQuestion();
         }
-
+        public TestResult getTestResult()
+        {
+            return testResult;
+        }
         public Context getContext()
         {
             return context;

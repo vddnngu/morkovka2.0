@@ -9,19 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MorkovkaAPI;
 
-namespace ResultViever
+namespace TeacherWindow
 {
-    public partial class Form1 : Form
+    public partial class ResultViever : Form
     {
         List<Button> buttons = new List<Button>();
-        List<TestResult> results = new List<TestResult>();
+        TestResult results = new TestResult();
         TestProcessing testProcessing;
-        public Form1()
+        public ResultViever(TestProcessing _testProcessing)
         {
             InitializeComponent();
-            
-
-
+            testProcessing = _testProcessing;
         }
         
         public void panel(int count)
@@ -34,7 +32,7 @@ namespace ResultViever
         }
         public void generateButton()
         {
-            for (int i = 0; i < results[1].getListAnswers().Count(); i++)
+            for (int i = 0; i < results.GetAttempts()[0].getListAnswers().Count(); i++)
             {
                 Button but = new Button();
                 but.Text = "Кнопка" + (i + 1);
@@ -49,7 +47,7 @@ namespace ResultViever
             {
                 panel2.Controls.Add(buttons[i]);
                 buttons[i].Location = new Point((buttons[i].Width + 60) * i, 35);
-                buttons[i].Text = testProcessing.getAnswers()[results[1].getListAnswers()[i]];
+                buttons[i].Text = testProcessing.getAnswers()[results.GetAttempts()[0].getListAnswers()[i]];
                 ToolTip toolTip1 = new ToolTip();
                 toolTip1.SetToolTip(buttons[i], testProcessing.getCurLink().getText());
                 if (i != buttons.Count-1)
@@ -99,9 +97,7 @@ namespace ResultViever
                 resultParser.ParseHeader();
                 resultParser.Parse();
                 ResultCreator resultCreator = new ResultCreator();
-                results = resultCreator.getTestResults(resultParser.resEntities);
-                testProcessing = results[1].getTestProcessing();
-                
+                results = testProcessing.getTestResult();        
                 locateButtons();
             }
 

@@ -40,6 +40,7 @@ namespace MorkovkaAPI
     public class TestParser
     {
         string path;
+        string resultPath;
         FileStream file;
         StreamReader fin;
         Dictionary<int, RecEntity> entityRecords = new Dictionary<int, RecEntity>();
@@ -64,6 +65,10 @@ namespace MorkovkaAPI
                     creator.setMainEntity(Convert.ToInt32(strs[1]));
                     continue;
                 }
+                if (strs[0] == "ResultPath")
+                {
+                    resultPath = strs[1];
+                }
                 //TODO add support of fields header: author data eth
             }
         }
@@ -87,6 +92,19 @@ namespace MorkovkaAPI
         {
             if(creator.getLink() == null)creator.generate();
             return creator.getLink();
+        }
+        public TestResult getTestResult()
+        {
+            if (resultPath != "")
+            {
+                TestResultParser resultParser = new TestResultParser(resultPath);
+                resultParser.allParse();
+                return resultParser.getTestResult();
+            }
+            else
+            {
+                return new TestResult();
+            }
         }
         private void AddEntity(string[] strs)
         {
@@ -233,5 +251,6 @@ namespace MorkovkaAPI
         {
             return startQuestion;
         }
+        
     }
 }

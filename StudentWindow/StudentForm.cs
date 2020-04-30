@@ -127,7 +127,9 @@ namespace MorkovkaAPI
                     TestResultParser resultParser = new TestResultParser(path.Replace(".test",".res"));
                     resultParser.allParse();
                     TestProcessing game = new TestProcessing(parser.getRootLink());
+                    game.setTestResult(parser.getTestResult());
                     game.setTestResult(resultParser.getTestResult());
+                    game.setCurUserIsTeacher(false);
                     myGUI = new StudentGUI(this, game);
                     game.setUserName(richTextBox1.Text);
                     game.setPath(OPF.FileName);

@@ -133,19 +133,8 @@ namespace MorkovkaAPI
     }
     public class TestResult
     {
-        TestProcessing test;
-        string testPath;
         string ownPath;
-        List<Attempt> attempts = new List<Attempt>();
-
-        public void setTestProcessing(TestProcessing _test)
-        {
-            test = _test;
-        }
-        public TestProcessing getTestProcessing()
-        {
-            return test;
-        }
+        List<Attempt> attempts = new List<Attempt>(); 
         public TestResult()
         {
             attempts = new List<Attempt>();
@@ -161,14 +150,6 @@ namespace MorkovkaAPI
         public void addAttempt(Attempt attempt)
         {
             attempts.Add(attempt);
-        }
-        public void setTestPath(string _testPath)
-        {
-            testPath = _testPath;
-        }
-        public string getTestPath()
-        {
-            return testPath;
         }
         public void setOwnPath(string _ownPath)
         {

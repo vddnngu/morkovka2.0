@@ -24,7 +24,6 @@ namespace MorkovkaAPI
         {
             string headerStr = "";
             headerStr += "HEADER\n";
-            headerStr += "TestPath"+ "|"  + testResult.getTestPath() + "\n";
             headerStr += "END HEADER\n\n";
             resData += headerStr;
         }

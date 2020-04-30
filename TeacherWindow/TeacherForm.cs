@@ -194,6 +194,8 @@ namespace MorkovkaAPI
                 TestParser parser = new TestParser(path);
                 parser.Parse();
                 TestProcessing game = new TestProcessing(parser.getRootLink());
+                game.setTestResult(parser.getTestResult());
+                game.setCurUserIsTeacher(true);
                 mainLink = parser.getRootLink();
                 myGUI = new TeacherGUI(this, game);
                 myGUI.start();
@@ -226,6 +228,13 @@ namespace MorkovkaAPI
             exitButton.Visible = false;
             openButton.Visible = false;
             editBut.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TeacherWindow. form = new Form1(myGUI.getContext(), myGUI);
+            form.setCurrentLink(myGUI.getCurrentLink());
+            form.Show();
         }
     }
 }

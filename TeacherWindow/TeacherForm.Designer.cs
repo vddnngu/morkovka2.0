@@ -38,6 +38,7 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
             this.openButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,12 +132,23 @@
             this.openButton.UseVisualStyleBackColor = false;
             this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(30, 116);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 70);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Результаты";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(748, 452);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.openButton);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.exitButton);
@@ -165,6 +177,7 @@
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.ToolStripMenuItem cjвввафыаыфToolStripMenuItem;
         private System.Windows.Forms.Button openButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 

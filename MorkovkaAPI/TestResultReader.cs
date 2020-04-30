@@ -22,7 +22,6 @@ namespace MorkovkaAPI
         string path;
         FileStream file;
         StreamReader fin;
-        string testPath;
         public List<ResEntity> resEntities;
         public TestResultParser(string _path)
         {
@@ -35,13 +34,8 @@ namespace MorkovkaAPI
         {
             ResultCreator creator = new ResultCreator();
             List<Attempt> attempt = creator.getTestResults(resEntities);
-            TestParser testParser = new TestParser(testPath);
-            testParser.Parse();
-            TestProcessing game = new TestProcessing(testParser.getRootLink());
             TestResult testResult = new TestResult();
-            testResult.setTestProcessing(game);
             testResult.setAttempts(attempt);
-            testResult.setTestPath(testPath);
             testResult.setOwnPath(path);
             return testResult;
         }
@@ -49,6 +43,7 @@ namespace MorkovkaAPI
         {
             ParseHeader();
             Parse();
+            fin.Close();
         }
         public void ParseHeader()
         {
@@ -56,12 +51,7 @@ namespace MorkovkaAPI
             while ((tmp = fin.ReadLine()) != "END HEADER")
             {
                 if (tmp == "") continue;
-                string[] strs = tmp.Split('|');
-                if (strs[0] == "TestPath")
-                {
-                    testPath = strs[1];
-                    continue;
-                }  
+ 
             }
         }
         public void Parse()
@@ -78,7 +68,6 @@ namespace MorkovkaAPI
                 entity.start = strs[2];
                 entity.finish = strs[3];
                 entity.result = strs[4];
-                entity.testPath = testPath;
                 resEntities.Add(entity);
             }
         }
@@ -103,13 +92,9 @@ namespace MorkovkaAPI
         }
         public List<Attempt> getTestResults (List<ResEntity> _resEntity)
         {
-            TestParser parser = new TestParser(_resEntity[0].testPath);
-            parser.Parse();
-            TestProcessing game = new TestProcessing(parser.getRootLink());
             for (int i=0; i<_resEntity.Count; i++)
             {
                 Attempt result = entityHandler(_resEntity[i]);
-                result.setTestProcessing(game);
                 attempts.Add(result);
             }
             return attempts;
